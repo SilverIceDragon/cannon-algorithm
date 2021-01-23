@@ -84,7 +84,7 @@ int main()
     int leftNgbr = 0, rightNgbr = 0, upperNgbr = 0, lowerNgbr = 0;
 
 
-//Each own processor rank and number of processors
+//each own processor rank and number of processors
     int rank;
     int size;
 
@@ -93,14 +93,14 @@ int main()
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
 
-//Basic data for cartesian grid
+//basic data for cartesian grid
     int dims[2];
 
 //dim[0] is coloum dimension and [1] is row dimension
     dims[0] = sqrt(size);
     dims[1] = sqrt(size);
 
-//Wehn periods = 1 (true), the end of the matrix connects again to the beginning
+//when periods = 1 (true), the end of the matrix connects again to the beginning
     int periods[2];
     periods[0] = 1;
     periods[1] = 1;
@@ -186,7 +186,7 @@ int main()
         }
 
 
-//Collect result block matrices of the individual processes on process 0
+//collect result block matrices of the individual processes on process 0
        MPI_Gatherv(&tempC, Blockrows*Blockcols, MPI_INT, *MatrixC, counts, disps, blocktype, 0, cart_comm);
 
 
